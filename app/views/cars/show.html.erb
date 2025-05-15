@@ -5,6 +5,16 @@
 
 <hr>
 
+<% if @car.favourites.empty? %>
+  <%= simple_form_for [@car, @favourite] do |f| %>
+    <%= f.submit "Save in my Garage", class: "btn btn-outline-secondary" %>
+  <% end %>
+<% else %>
+  <p>This is already in my Garage!</p>
+<% end %>
+
+<hr>
+
 <%= simple_form_for [@car, @review] do |f| %>
   <%= f.input :comment, input_html: { placeholder: "Your comment goes here.." } %>
   <%= f.input :rating, collection: 1..5 %>

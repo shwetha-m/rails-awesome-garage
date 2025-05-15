@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   resources :cars, only: %i[index show] do
     resources :reviews, only: %i[create]
+    resources :favourites, only: [:create]
   end
+  resources :favourites, only: [:index, :destroy]
 
   # get '/cars', to: 'cars#index'
   # get '/cars/:id', to: 'cars#show'

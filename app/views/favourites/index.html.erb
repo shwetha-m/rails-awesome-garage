@@ -1,0 +1,13 @@
+<h3>my favorite cars</h3>
+
+<ul>
+  <% @favourites.each do |favorite| %>
+    <li>
+      <%= favorite.car.brand %> -
+      <%= favorite.car.model %> |
+      <%= link_to favourite_path(favorite), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'} do %>
+        <i class="fa-sharp-duotone fa-regular fa-trash-can"></i>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
