@@ -9,6 +9,16 @@
 #   end
 puts "Cleaning the DB"
 Car.destroy_all
+Owner.destroy_all
+
+puts "Creating owners..."
+
+dipesh = Owner.create!(nickname: "Dipesh")
+luke = Owner.create!(nickname: "Luke")
+edward = Owner.create!(nickname: "Edward")
+tara = Owner.create!(nickname: "Tara")
+
+puts "Done! #{Owner.count} Owners created!"
 
 puts "Creating cars..."
 
@@ -17,7 +27,7 @@ Car.create!(
   model: "A-class Hatchback",
   year: 2015,
   fuel: "Unleaded petrol",
-  owner_id: 2
+  owner: dipesh
 )
 
 Car.create!(
@@ -25,7 +35,7 @@ Car.create!(
   model: "A6 e‑tron",
   year: 2024,
   fuel: "electric",
-  owner_id: 1
+  owner: luke
 )
 
 Car.create!(
@@ -33,7 +43,15 @@ Car.create!(
   model: "XC90",
   year: 2022,
   fuel: "Hybrid",
-  owner_id: 3
+  owner: edward
+)
+
+Car.create!(
+  brand: "Ferrari",
+  model: "Testarossa",
+  year: 1995,
+  fuel: "Diesel",
+  owner: tara
 )
 
 puts "Done! #{Car.count} Recipes created!"

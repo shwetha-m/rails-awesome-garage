@@ -1,0 +1,8 @@
+<h1>All cars</h1>
+  <% @cars.each do |car| %>
+    <p><%= link_to car.brand , car_path(car) %></p>
+    <p><%= car.model %></p>
+    <p><%= car.owner.nickname %></p>
+    <p><%= car.created_at.strftime("%a %b %e at %l:%M %p") %></p>
+    <hr>
+  <% end %>
