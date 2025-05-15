@@ -3,6 +3,9 @@
 <h2><%= @car.fuel %></h2>
 <h2><%= @car.year %></h2>
 
+<%= link_to "Home", cars_path %>
+<%= link_to "My Garage", favourites_path %>
+
 <hr>
 
 <% if @car.favourites.empty? %>
