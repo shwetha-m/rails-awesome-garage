@@ -1,12 +1,27 @@
-<%= link_to "Home", cars_path %>
-<%= link_to "My Garage", favourites_path %>
+<%= render 'shared/navbar' %>
 
-
-<h1>All cars</h1>
+<div class="container w-50">
   <% @cars.each do |car| %>
-    <p><%= link_to car.brand , car_path(car) %></p>
-    <p><%= car.model %></p>
-    <p><%= car.owner.nickname %></p>
-    <p><%= car.created_at.strftime("%a %b %e at %l:%M %p") %></p>
-    <hr>
+    <div class="car-alone">
+      <div class="car-detail">
+        <h5><%= link_to car.brand , car_path(car) %></h5>
+        <h6><%= car.model %></h6>
+        <p><%= car.created_at.strftime("%a %b %e at %l:%M %p") %></p>
+      </div>
+
+      <%= image_tag(car.image_url || 'garage_banner.jpg', alt: "Car image") %>
+      <%# <img src="https://images.pexels.com/photos/2664399/pexels-photo-2664399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" /> %>
+
+      <div class="car-infos">
+        <div>
+          <%= link_to car_path(car) do %>
+            <i class="fa-sharp fa-regular fa-comment"></i> <span>Comment</span>
+          <% end %>
+        </div>
+        <div class="car-user">
+          <span class="user-button"><%= car.owner.nickname %></span>
+        </div>
+      </div>
+    </div>
   <% end %>
+</div>

@@ -1,16 +1,26 @@
-<%= link_to "Home", cars_path %>
-<%= link_to "My Garage", favourites_path %>
+<%= render 'shared/navbar' %>
 
-<h3>my favorite cars</h3>
+<div class="container w-50 my-5">
+  <h4 class="garage-heading">My Garage</h4>
 
-<ul>
   <% @favourites.each do |favorite| %>
-    <li>
-      <%= favorite.car.brand %> -
-      <%= favorite.car.model %> |
-      <%= link_to favourite_path(favorite), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'} do %>
-        <i class="fa-sharp-duotone fa-regular fa-trash-can"></i>
-      <% end %>
-    </li>
+    <div class="garage-car">
+      <%= image_tag(favorite.car.image_url || 'garage_banner.jpg', alt: "Car image") %>
+      <%# <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" /> %>
+
+      <div class="w-100 d-flex justify-content-between align-item-center">
+        <div class="garage-car-infos">
+          <h5><%= link_to favorite.car.brand, car_path(favorite.car) %></h5>
+          <h6><%= favorite.car.model %></h6>
+          <p><%= favorite.car.year %> | <%= favorite.car.fuel %></p>
+        </div>
+
+        <div class="garage-car-delete">
+          <%= link_to favourite_path(favorite), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'} do %>
+            <i class="fa-sharp-duotone fa-regular fa-trash-can"></i>
+          <% end %>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>

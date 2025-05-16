@@ -1,0 +1,73 @@
+.car-alone {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin: 40px 0;
+  border-radius: 4px;
+}
+
+.car-alone .car-detail {
+  padding: 10px 10px;
+}
+
+.car-alone > img {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.car-alone h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.car-alone p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+.car-detail h5 a {
+  color: red;
+  font-weight: bold;
+  &:hover {
+    color:  rgb(62, 87, 213);
+  }
+}
+
+.car-alone .car-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.car-infos .car-user {
+  position: absolute;
+  right: 25px;
+  bottom: 45px;
+  // width: 40px;
+}
+
+.car-infos a {
+  color: #848484;
+  font-weight: bold;
+  &:hover {
+    color:  rgb(62, 87, 213);
+  }
+}
+
+.car-detail h6 {
+  color: #3E3E3E;
+  font-weight: bold;
+}
+
+.user-button {
+  background-color: red;
+  color: white;
+  border: 1px solid red;
+  border-radius: 16px;
+  padding: 5px 3px;
+}

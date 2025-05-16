@@ -1,32 +1,48 @@
-<h1><%= @car.brand %></h1>
-<h2><%= @car.model %></h2>
-<h2><%= @car.fuel %></h2>
-<h2><%= @car.year %></h2>
+<%= render 'shared/navbar' %>
 
-<%= link_to "Home", cars_path %>
-<%= link_to "My Garage", favourites_path %>
+<div class="container w-75 my-5">
+  <div class="car-card">
+    <%= image_tag(@car.image_url || 'garage_banner.jpg', alt: "Car image") %>
+    <%# <img src="https://images.pexels.com/photos/2664399/pexels-photo-2664399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" /> %>
 
-<hr>
+    <div class="in-garage">
+      <% if @car.favourites.empty? %>
+        <%= simple_form_for [@car, @favourite] do |f| %>
+          <%= f.submit "Save in my Garage", class: "btn btn-outline-secondary" %>
+        <% end %>
+      <% else %>
+        <p>This is already in my Garage!</p>
+      <% end %>
+    </div>
 
-<% if @car.favourites.empty? %>
-  <%= simple_form_for [@car, @favourite] do |f| %>
-    <%= f.submit "Save in my Garage", class: "btn btn-outline-secondary" %>
-  <% end %>
-<% else %>
-  <p>This is already in my Garage!</p>
-<% end %>
+    <div class="car-card-infos">
+      <div>
+        <h5 class="font-bold"><%= @car.brand %></h5>
+        <h6 class="font-bold"><%= @car.model %></h6>
+        <h6><%= @car.fuel %></h6>
+        <h6><%= @car.year %></h6>
+      </div>
 
-<hr>
+      <div class="w-50">
+        <%= simple_form_for [@car, @review] do |f| %>
+          <%= f.input :comment, input_html: { placeholder: "Comment here.." } %>
+          <%= f.input :rating, collection: 1..5 %>
+          <div class="d-flex justify-content-end">
+            <%= f.submit "Send", class: "btn btn-outline-secondary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
 
-<%= simple_form_for [@car, @review] do |f| %>
-  <%= f.input :comment, input_html: { placeholder: "Your comment goes here.." } %>
-  <%= f.input :rating, collection: 1..5 %>
-  <%= f.submit "Send", class: "btn btn-outline-secondary" %>
-<% end %>
-
-<hr>
-
-<% @car.reviews.each do |review| %>
-  <p><%= review.comment %> <%= '⭐' * review.rating %></p>
-  <br>
-<% end %>
+    <div class="review-section">
+      <hr>
+      <p>reviews (<%= @car.reviews.count %>):</p>
+      <div>
+        <% @car.reviews.each do |review| %>
+          <p><%= review.comment %> <%= '⭐' * review.rating %></p>
+        <% end %>
+      </div>
+      <hr>
+    </div>
+  </div>
+</div>

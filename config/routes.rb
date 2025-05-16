@@ -12,7 +12,9 @@ Rails.application.routes.draw do
     resources :reviews, only: %i[create]
     resources :favourites, only: [:create]
   end
-  resources :favourites, only: [:index, :destroy]
+  resources :favourites, only: %i[index destroy]
+
+  get '/', to: 'pages#index'
 
   # get '/cars', to: 'cars#index'
   # get '/cars/:id', to: 'cars#show'

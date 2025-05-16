@@ -1,0 +1,42 @@
+.car-card {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: relative;
+  border-radius: 4px;
+}
+
+.car-card > img {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+  background-position: bottom;
+}
+
+.car-card-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.car-card-infos .font-bold {
+  font-weight: bold;
+}
+
+.car-card .in-garage {
+  position: absolute;
+  top: 20px;
+  right:20px;
+  p {
+    color: #D4D4D2;
+  }
+}
+
+.review-section {
+  padding: 20px;
+}
+
+.car-card-infos label {
+  display: none;
+}

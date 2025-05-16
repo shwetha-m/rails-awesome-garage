@@ -1,0 +1,13 @@
+<div class= "navbar">
+  <div>
+    <%= link_to cars_path do %>
+      <%= image_tag 'garage_logo.jpg' %>
+      <span class="text-deco">Awesome Garage</span>
+    <% end %>
+  </div>
+
+  <div>
+    <%= link_to "Home", cars_path %>
+    <%= link_to "My Garage", favourites_path %>
+  </div>
+</div>
